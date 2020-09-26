@@ -1,39 +1,50 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="Style_Script/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>   
-    <title>Super Todo List</title>    
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="Style_Script/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <title>Super Todo List</title>
 </head>
+
 <body>
-    <div class="headerDiv">       
-        <textarea id="txtToDo" placeholder="Please enter you todo here..." class="textBox" rows="2" cols="20"></textarea> 
-        <div class="colors"><span ></span><span></span><span></span><span></span></div>     
-        <button id="myButton" onclick="SaveNotes()">Save</button>
-        <textarea id="color_code" style="display:none;"></textarea>  
-        <div id="timedate">
-            <a id="mon">January</a>
-            <a id="d">1</a>,
-            <a id="y">0</a><br />
-            <a id="h">12</a> :
-            <a id="m">00</a>:
-            <a id="s">00</a>
-            <a style="display:none;" id="mi">000</a>
-          </div>
+  <div class="headerDiv">
+    <textarea id="txtToDo" placeholder="Please enter you todo here..." class="textBox" rows="2" cols="20"></textarea>
+    <div class="colors"><span></span><span></span><span></span><span></span></div>
+    <button id="myButton" onclick="SaveNotes()">Save</button>
+    <textarea id="color_code" style="display:none;"></textarea>
+    <div id="timedate">
+      <a id="mon">January</a>
+      <a id="d">1</a>,
+      <a id="y">0</a><br />
+      <a id="h">12</a> :
+      <a id="m">00</a>:
+      <a id="s">00</a>
+      <a style="display:none;" id="mi">000</a>
     </div>
-    <div id="displayArea">
+  </div>
+  <div id="displayArea">
+  </div>
+  <!-- <label class="switch">
+    <div class="text"></div>
+    <div class="togglebox">
+      <input class="togglebtn" id="morph_check" type="checkbox" />
+      <div class="toggleswitch"></div>
     </div>
-    <label class="switch">
-      <div class="text"></div>
-      <div class="togglebox">
-        <input class="togglebtn" id="morph_check" type="checkbox" />
-        <div class="toggleswitch"></div>
-      </div>
-      <div class="text1"></div>
-    </label>
-  <script src="Style_Script/app.js"></script> 
+    <div class="text1"></div>
+  </label> -->
+  <div class="action_buttons">
+   <a class="btn" href="#" data-function="localStorageBackup">Backup local storage</a>
+   <a class="btn" data-function="localStorageRestore" href="#">Restore local storage</a>
+   <a class="btn" data-function="localStorageClear" href="#">Clear local storage</a>
+  </div>
+
+  <script src="Style_Script/app.js"></script>
+  <script src="Style_Script/backup.js"></script>
 </body>
+
 </html>

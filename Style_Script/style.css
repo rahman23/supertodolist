@@ -73,14 +73,14 @@ span {
   padding: 10px;
   display: flex;
   align-items: center;
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .headerDiv {
         align-items: flex-start;        
         height: 300px;
       }
-  }
+  } */
 .textBox {
   border-radius: 3px;
   background: #ece9e6; /* fallback for old browsers */
@@ -94,7 +94,7 @@ span {
     white,
     #ece9e6
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 15vh;
+  height: 200px;
   width: 265px;
   margin-bottom: 10px;
   padding: 20px;
@@ -130,14 +130,22 @@ span {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row-reverse;
-  /* margin-top: 20px; */
-  padding: 0 150px;
-  z-index: 9999999;
+  padding: 0 100px;
+  z-index: 999;
   padding-top: 20px;
-  position: absolute;
-  background-color: white;
-  height: 300px;
+  position: relative;
 }
+@media only screen and (max-width: 900px) {
+    #displayArea {
+        padding: 0 50px;
+      }
+    } 
+    @media only screen and (min-width: 900px) {
+      #displayArea {
+          height: calc(100vh - 360px);
+        }
+      } 
+
 .delete_icon {
   float: right;
 }
@@ -154,15 +162,17 @@ span {
 }
 .colors {
   display: flex;
-  width: 303px;
-  margin-bottom: 10px;
+  width: 270px;
+  margin-bottom: -20px;
   justify-content: space-between;
 }
 .colors span {
   height: 30px;
+  position: relative;
   width: 50px;
   border-radius: 15px;
   cursor: pointer;
+  top: -50px;
 }
 .colors span:nth-child(1) {
   background: #d3cce3; /* fallback for old browsers */
@@ -216,8 +226,7 @@ span {
     #ec6f66
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.colors span:nth-child(5) {
-}
+
 #timedate {
   font: small-caps lighter 2.5vw/150% "Segoe UI", Frutiger, "Frutiger Linotype",
     "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
@@ -227,18 +236,27 @@ span {
   color: #fff;
   border-left: 3px solid #ed1f24;
 }
+@media only screen and (max-width: 900px) {
+  #timedate{
+    padding: 0px 10px 0px 10px;
+ }
+} 
 label.switch {
   display: inline-flex;
-  align-items: center;
   cursor: pointer;
   color: #394a56;
   position: fixed;
-  z-index: 999999;
   height: 40px;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   bottom: 5px;
-  right: 10px;
+  right: 5px;
+}
+.action_buttons{
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 9999;
 }
 .text {
   margin-right: 16px;
