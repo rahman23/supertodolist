@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<head>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>   
+    <title>Super Todo List</title>
+    <style type="text/css">
+        body
+        {
+            overflow-y: scroll; overflow-x:hidden;
+            margin:0;
+            padding:0;
+        }
+        span
+        {
+            font-size: 22px;
+            padding-right: 5px;
+            color: #FFF;
+        }
+        /* Animation property */
+       .button_animate {
+         animation: wiggle 2s linear;
+       }
+       #myButton:focus {outline:0;}
+       /* Keyframes */
+       @keyframes wiggle {
+         0%, 7% {
+           transform: rotateZ(0);
+         }
+         15% {
+           transform: rotateZ(-7deg);
+         }
+         20% {
+           transform: rotateZ(5deg);
+         }
+         25% {
+           transform: rotateZ(-5deg);
+         }
+         30% {
+           transform: rotateZ(3deg);
+         }
+         35% {
+           transform: rotateZ(-1deg);
+         }
+         40%, 100% {
+           transform: rotateZ(0);
+         }
+       }    
+       #myButton {         
+         height: 3em;
+         width: 305px;
+         background: #0F2027;  /* fallback for old browsers */
+         background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+         background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */         
+         border: none;
+         border-top: 3px solid orange;
+         border-radius: 3px;
+         color: #fff;
+         font-family: Helvetica, Arial, Sans-serif;
+         font-size: 21px;
+         transform-origin: 50% 5em;
+       }      
+       .headerDiv
+       {
+           height: auto;            
+           background:#709fb0;
+           flex-direction: column;
+           padding: 10px;
+           display: flex;
+           align-items: center;
+           padding:30px 0px;
+           height: calc( 40vh - 60px );
+       }      
+       .textBox
+       {        
+           border-radius: 3px;
+           background: #ECE9E6;  /* fallback for old browsers */
+           background: -webkit-linear-gradient(to right, white, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+           background: linear-gradient(to right, white, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */     
+           height: 200px;
+           width: 265px;
+           margin-bottom: 10px;
+           padding: 20px;
+           font-size: 20px;
+       }        
+       .displayToDo
+       {
+           -moz-border-radius: 10px;
+           border-radius: 10px;
+           min-width: 300px;
+           max-width:400px;
+           height: fit-content;
+           background: #ECE9E6;  /* fallback for old browsers */
+           background: -webkit-linear-gradient(to right, #f9f9f9, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+           background: linear-gradient(to right, #f9f9f9, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */            
+           float: left;
+           margin: 10px;
+           padding: 10px;   
+           cursor: pointer;    
+       }
+       .mouseDown{
+           cursor:move;
+       }
+       #displayArea{
+           display: flex;
+           justify-content: center;
+           flex-wrap: wrap;
+           flex-direction: row-reverse;
+           /* margin-top: 20px; */
+           padding: 0 150px;
+           z-index: 9999999;
+           padding-top: 20px;
+           position: absolute;
+           background-color: white;
+           height: 49vh;
+       }
+       .delete_icon{
+           float: right;
+       }
+       .todo_text{
+           font-size: 19px;
+           line-height: 24px;
+           padding: 7px 10px 10px 10px;
+           font-family: 'Roboto', sans-serif;
+           white-space: pre-wrap;
+       }
+       .delete_icon:hover{
+           transform: scale(1.4); 
+           transition: transform 0.3s ease-in-out;
+       }
+       .colors{
+        display: flex;
+        width: 303px;
+        margin-bottom: 10px;
+        justify-content: space-between;
+       }
+       .colors span{
+           height:30px;
+           width: 50px;
+           border-radius: 15px;
+           cursor: pointer;           
+       }
+       .colors span:nth-child(1) {
+        background: #D3CCE3;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          }
+       .colors span:nth-child(2) {
+        background: #FFEFBA;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+       }
+       .colors span:nth-child(3) {
+        background: #06beb6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #48b1bf, #06beb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+       }
+       .colors span:nth-child(4) {
+        background: #EC6F66;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #F3A183, #EC6F66);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #F3A183, #EC6F66); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+       }
+       .colors span:nth-child(5) {
+       }
+      #timedate {
+        font: small-caps lighter 35px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        position:absolute;
+        right: 0;
+        padding: 0px 35px 0px 25px;
+        color:#fff;
+        border-left: 3px solid #ed1f24;
+      }
+      label.switch {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        color: #394a56;
+        position: fixed;
+        z-index: 999999;
+        height: 40px;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;  
+        bottom: 5px;
+        right: 10px;
+       }       
+       .text {
+         margin-right: 16px;
+       }
+       .text1 {
+         margin-left: 16px;
+       }       
+       .togglebox {
+         position: relative;
+         height: 32px;
+         width: 64px;
+         border-radius: 16px;
+         overflow: hidden;
+         box-shadow: -8px -4px 8px #ffffff, 8px 4px 12px #d1d9e6,
+           4px 4px 4px #d1d9e6 inset, -4px -4px 4px #ffffff inset;
+       }
+       .togglebtn {
+         display: none;
+       }       
+       .toggleswitch {
+         height: 100%;
+         width: 200%;
+         background: #bdc3c7; /* fallback for old browsers */
+         background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); /* Chrome 10-25, Safari 5.1-6 */
+         background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         border-radius: 15px;
+         transform: translateX(-75%);
+         transition: transform 0.6s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+         box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+       }       
+       .togglebtn:checked ~ .toggleswitch {
+         transform: translateX(25%);
+       }      
+    </style>   
+</head>
+<body>
+    <div class="headerDiv">       
+        <textarea id="txtToDo" placeholder="Please enter you todo here..." class="textBox" rows="2" cols="20"></textarea> 
+        <div class="colors"><span ></span><span></span><span></span><span></span></div>     
+        <button id="myButton" onclick="SaveNotes()">Save</button>
+        <textarea id="color_code" style="display:none;"></textarea>  
+        <div id="timedate">
+            <a id="mon">January</a>
+            <a id="d">1</a>,
+            <a id="y">0</a><br />
+            <a id="h">12</a> :
+            <a id="m">00</a>:
+            <a id="s">00</a>
+            <a style="display:none;" id="mi">000</a>
+          </div>
+    </div>
+    <div id="displayArea">
+    </div>
+    <label class="switch">
+      <div class="text"></div>
+      <div class="togglebox">
+        <input class="togglebtn" id="morph_check" type="checkbox" />
+        <div class="toggleswitch"></div>
+      </div>
+      <div class="text1"></div>
+    </label>
+    <script type="text/javascript">
+        var currentFormVisibilityStatus = false;
+        function SaveNotes() {  
+            var todo = document.getElementById("txtToDo").value;   
+            var color = document.getElementById("color_code").value;
+            if (todo == "") {
+                alert("Please enter text.");
+                return;
+            } 
+            var storage = JSON.parse(localStorage.getItem('ToDoList'));
+            var arrayLength = storage.length;  
+            storage[arrayLength] = color;        
+            storage[arrayLength + 1] = todo;
+            localStorage.setItem('ToDoList', JSON.stringify(storage));       
+            loadNotes();
+            clearNote();
+        }
+        function clearNote() {
+            var todo = document.getElementById("txtToDo");
+            todo.value = '';
+        }
+        function loadNotes() {
+            var storage = JSON.parse(localStorage.getItem('ToDoList'));
+            if (!storage) {
+                storage = [];
+                localStorage.setItem('ToDoList', JSON.stringify(storage));
+            }
+            var displayArea = document.getElementById("displayArea");            
+            var innerDiv = "";
+            for (var i = 0; i < storage.length; i = i + 2) {  
+                    var j = i+1;             
+                    innerDiv += "<div id='draggable' class='displayToDo "+i+"' style='background: "+storage[i]+" ; '><input type='image' class='delete_icon' src='images/delete_icon.png' width='25px' height='32px' onclick='removeMe(" + j + ")' /> <div class='todo_text'> " + storage[i+1] + "</div></div>";
+            }
+            if (innerDiv != undefined) {
+                displayArea.innerHTML = innerDiv;
+            }
+            else {
+                displayArea.innerHTML = "";
+            }
+            make_draggable(); 
+        }
+        function removeMe(itemId) {
+            var storage = JSON.parse(localStorage.getItem('ToDoList'));
+            storage.splice(itemId - 1, 2);
+            localStorage.setItem('ToDoList', JSON.stringify(storage));
+            loadNotes();
+        }
+        onload = function () {
+            loadNotes();
+        }        
+        $('#myButton').on('click', function(){
+            var todo = document.getElementById("txtToDo").value;   
+            if (todo == "") {
+                return;
+            } 
+           $('#myButton').addClass('button_animate');
+           console.log("yes");
+           setTimeout(function(){ $('#myButton').removeClass('button_animate'); }, 1500);          
+       });
+       $("body").keypress(function(event) { 
+            if (event.keyCode == 13 && !event.shiftKey) {             
+                $('#myButton').click();            } 
+        }); 
+        $(".colors span").click(function(e) {
+          let c = $(this).css('background');
+          $("#color_code").text(c);
+          console.log("color clicked " + c);
+        });
+        // START CLOCK SCRIPT  
+        Number.prototype.pad = function(n) {
+          for (var r = this.toString(); r.length < n; r = 0 + r);
+          return r;
+        };
+        function updateClock() {
+          var now = new Date();
+          var milli = now.getMilliseconds(),
+            sec = now.getSeconds(),
+            min = now.getMinutes(),
+            hou = now.getHours(),
+            mo = now.getMonth(),
+            dy = now.getDate(),
+            yr = now.getFullYear();
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+            corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+            for (var i = 0; i < tags.length; i++)
+               document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+         }
+        function initClock() {
+          updateClock();
+          window.setInterval("updateClock()", 1);
+        }        
+        initClock();
+        //END CLOCK SCRIPT
+        //Draggable script
+        function make_draggable(){
+            var positions = JSON.parse(localStorage.positions || "{}");            
+            var d = $("[id=draggable]").attr("id", function (i) {
+                return "draggable_" + i
+            });
+            $.each(positions, function (id, pos) {
+                $("#" + id).css(pos)
+            });        
+            d.draggable({
+                containment: "#displayArea",
+                stop: function (event, ui) {
+                    positions[this.id] = ui.position
+                    localStorage.positions = JSON.stringify(positions)
+                }
+            });          
+        }
+        $(window).on("load", function() {
+            //Pointer changes while dragging
+            $('.displayToDo').live("mousedown", function() {
+                $(this).addClass("mouseDown");
+             }).live("mouseup", function () {
+                 $(this).removeClass("mouseDown");
+             });
+             // If user clicks on text it will be copied to clipboard
+             $(".todo_text").click(function(e) {
+                var range = document.createRange();
+                range.selectNode(this);
+                window.getSelection().removeAllRanges(); // clear current selection
+                window.getSelection().addRange(range); // to select text
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();// to deselect
+             });
+            //  $('#morph_check').change(function() {
+            //     if($(this).is(":checked")) {
+            //        //'checked' event code
+            //     }else{
+            //         make_draggable(); 
+            //     }
+            //     window.location.reload(true);
+            //  });
+        });  
+    </script>   
+</body>
+</html>
