@@ -132,7 +132,7 @@ span {
   flex-direction: row-reverse;
   padding: 0 100px;
   z-index: 999;
-  padding-top: 20px;
+  padding-top: 10px;
   position: relative;
 }
 @media only screen and (max-width: 900px) {
@@ -142,7 +142,7 @@ span {
     } 
     @media only screen and (min-width: 900px) {
       #displayArea {
-          height: calc(100vh - 360px);
+        height: calc(100vh - 330px);
         }
       } 
 

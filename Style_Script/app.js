@@ -54,7 +54,8 @@ function loadNotes() {
         $(this).removeClass("mouseDown");
       });
   } else {
-    //For mobile and tablet deactivate draggable
+    //For mobile and tablet deactivate draggable and set the top left initial
+    $(".displayToDo").css('top','inherit').css('left','inherit');
   }
 }
 function removeMe(itemId) {
