@@ -1,0 +1,282 @@
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+span {
+  font-size: 22px;
+  padding-right: 5px;
+  color: #fff;
+}
+/* Animation property */
+.button_animate {
+  animation: wiggle 2s linear;
+}
+#myButton:focus {
+  outline: 0;
+}
+/* Keyframes */
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-7deg);
+  }
+  20% {
+    transform: rotateZ(5deg);
+  }
+  25% {
+    transform: rotateZ(-5deg);
+  }
+  30% {
+    transform: rotateZ(3deg);
+  }
+  35% {
+    transform: rotateZ(-1deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+#myButton {
+  height: 3em;
+  width: 305px;
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: none;
+  border-top: 3px solid orange;
+  border-radius: 3px;
+  color: #fff;
+  font-family: Helvetica, Arial, Sans-serif;
+  font-size: 21px;
+  transform-origin: 50% 5em;
+}
+.headerDiv {
+  height: 250px;
+  background: #709fb0;
+  flex-direction: column;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 30px 0px;
+}
+@media only screen and (max-width: 768px) {
+    .headerDiv {
+        align-items: flex-start;        
+        height: 300px;
+      }
+  }
+.textBox {
+  border-radius: 3px;
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    white,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    white,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 15vh;
+  width: 265px;
+  margin-bottom: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
+.displayToDo {
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  min-width: 300px;
+  max-width: 400px;
+  height: fit-content;
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f9f9f9,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f9f9f9,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.mouseDown {
+  cursor: move;
+}
+#displayArea {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  /* margin-top: 20px; */
+  padding: 0 150px;
+  z-index: 9999999;
+  padding-top: 20px;
+  position: absolute;
+  background-color: white;
+  height: 300px;
+}
+.delete_icon {
+  float: right;
+}
+.todo_text {
+  font-size: 19px;
+  line-height: 24px;
+  padding: 7px 10px 10px 10px;
+  font-family: "Roboto", sans-serif;
+  white-space: pre-wrap;
+}
+.delete_icon:hover {
+  transform: scale(1.4);
+  transition: transform 0.3s ease-in-out;
+}
+.colors {
+  display: flex;
+  width: 303px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.colors span {
+  height: 30px;
+  width: 50px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.colors span:nth-child(1) {
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.colors span:nth-child(2) {
+  background: #ffefba; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #ffefba
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #ffefba
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.colors span:nth-child(3) {
+  background: #06beb6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #48b1bf,
+    #06beb6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #48b1bf,
+    #06beb6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.colors span:nth-child(4) {
+  background: #ec6f66; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f3a183,
+    #ec6f66
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f3a183,
+    #ec6f66
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.colors span:nth-child(5) {
+}
+#timedate {
+  font: small-caps lighter 2.5vw/150% "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  position: absolute;
+  right: 0;
+  padding: 0px 35px 0px 25px;
+  color: #fff;
+  border-left: 3px solid #ed1f24;
+}
+label.switch {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #394a56;
+  position: fixed;
+  z-index: 999999;
+  height: 40px;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  bottom: 5px;
+  right: 10px;
+}
+.text {
+  margin-right: 16px;
+}
+.text1 {
+  margin-left: 16px;
+}
+.togglebox {
+  position: relative;
+  height: 32px;
+  width: 64px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: -8px -4px 8px #ffffff, 8px 4px 12px #d1d9e6,
+    4px 4px 4px #d1d9e6 inset, -4px -4px 4px #ffffff inset;
+}
+.togglebtn {
+  display: none;
+}
+.toggleswitch {
+  height: 100%;
+  width: 200%;
+  background: #bdc3c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 15px;
+  transform: translateX(-75%);
+  transition: transform 0.6s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+  box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+}
+.togglebtn:checked ~ .toggleswitch {
+  transform: translateX(25%);
+}
