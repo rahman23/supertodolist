@@ -70,7 +70,6 @@ span {
   height: 250px;
   background: #709fb0;
   flex-direction: column;
-  padding: 10px;
   display: flex;
   align-items: center;
   padding: 20px 0px;
@@ -100,13 +99,13 @@ span {
   padding: 20px;
   font-size: 20px;
 }
-.displayToDo {
+.displayToDo {  
+   background: #333;
   -moz-border-radius: 10px;
   border-radius: 10px;
   min-width: 200px;
   max-width: 400px;
   height: fit-content;
-  position:absolute !important;
   background: #ece9e6; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -126,13 +125,14 @@ span {
 .mouseDown {
   cursor: move;
 }
-#displayArea {
-  
+#displayArea {  
   padding: 0 100px;
   z-index: 999;
   padding-top: 10px;
   position: relative;
 }
+
+
 @media only screen and (max-width: 900px) {
     #displayArea {
         padding: 0 50px;
