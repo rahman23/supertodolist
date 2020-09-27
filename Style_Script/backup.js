@@ -19,7 +19,7 @@ var localStorageBackup = function() {
   var localStorageRestore = function() {
     var t = document.createElement('div');
     var a = document.createElement('a');
-    a.appendChild(document.createTextNode('X'));
+    a.appendChild(document.createTextNode('Close'));
     a.setAttribute('href', '#');
   
     a.style.position = 'absolute';
@@ -31,11 +31,12 @@ var localStorageBackup = function() {
     a.onclick = function() {
         t.remove();
     };
-    t.style.width = '50%';
+   
+    t.style.width = '30%';
     t.style.position = 'absolute';
     t.style.top = '25%';
-    t.style.left = '25%';
-    t.style['background-color'] = 'gray';
+    t.style.left = '35%';
+    t.style['background-color'] = 'rgba(128, 128, 128, 0.95)';
     t.style['text-align'] = 'center';
     t.style.padding = '50px';
     t.style.color = '#fff';
@@ -64,7 +65,7 @@ var localStorageBackup = function() {
         }
     };
     var a = document.createElement('h3');
-    a.appendChild(document.createTextNode('Select file with backup'));
+    a.appendChild(document.createTextNode(' '));
     t.appendChild(a);
     t.appendChild(l);
     document.querySelector('body').appendChild(t);
@@ -73,6 +74,7 @@ var localStorageBackup = function() {
   var localStorageClear = function() {
     if(window.confirm('Do you really want to delete all ' + localStorage.length + ' localStorage items of this website?')) {
       localStorage.clear();
+      location.reload();
     }
   }
   document.addEventListener('DOMContentLoaded',function() {

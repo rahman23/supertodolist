@@ -95,7 +95,7 @@ span {
     #ece9e6
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 200px;
-  width: 265px;
+  width: 305px;
   margin-bottom: 10px;
   padding: 20px;
   font-size: 20px;
@@ -103,9 +103,10 @@ span {
 .displayToDo {
   -moz-border-radius: 10px;
   border-radius: 10px;
-  min-width: 300px;
+  min-width: 200px;
   max-width: 400px;
   height: fit-content;
+  position:absolute !important;
   background: #ece9e6; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -126,10 +127,7 @@ span {
   cursor: move;
 }
 #displayArea {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
+  
   padding: 0 100px;
   z-index: 999;
   padding-top: 10px;
@@ -138,6 +136,10 @@ span {
 @media only screen and (max-width: 900px) {
     #displayArea {
         padding: 0 50px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
       }
     } 
     @media only screen and (min-width: 900px) {
@@ -162,7 +164,7 @@ span {
 }
 .colors {
   display: flex;
-  width: 270px;
+  width: 255px;
   margin-bottom: -20px;
   justify-content: space-between;
 }
@@ -228,7 +230,7 @@ span {
 }
 
 #timedate {
-  font: small-caps lighter 2.5vw/150% "Segoe UI", Frutiger, "Frutiger Linotype",
+  font: small-caps lighter 2.4vw/150% "Segoe UI", Frutiger, "Frutiger Linotype",
     "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   position: absolute;
   right: 0;
