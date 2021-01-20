@@ -149,6 +149,7 @@ function make_draggable() {
 $(window).on("load", function () {
   // If user clicks on text it will be copied to clipboard
   $(".todo_text").click(function (e) {
+    e.preventDefault();
     var range = document.createRange();
     range.selectNode(this);
     window.getSelection().removeAllRanges(); // clear current selection
@@ -156,12 +157,5 @@ $(window).on("load", function () {
     document.execCommand("copy");
     window.getSelection().removeAllRanges(); // to deselect
   });
-  //  $('#morph_check').change(function() {
-  //     if($(this).is(":checked")) {
-  //        //'checked' event code
-  //     }else{
-  //         make_draggable();
-  //     }
-  //     window.location.reload(true);
-  //  });
+ 
 });
