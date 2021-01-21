@@ -35,7 +35,7 @@ function loadNotes() {
       storage[i] +
       " ; '><input type='image' class='delete_icon' src='images/delete_icon.png' width='25px' height='32px' onclick='removeMe(" +
       j +
-      ")' /> <div class='todo_text'> " +
+      ")' /> <div class='todo_text'>"+
       storage[i + 1] +
       "</div></div>";
   }
