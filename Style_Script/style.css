@@ -176,6 +176,10 @@ span {
   cursor: pointer;
   top: -50px;
 }
+.colors span:hover {
+    transform: scale(1.3);
+    transition: transform .4s ease;
+}
 .colors span:nth-child(1) {
   background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
